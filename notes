@@ -1,0 +1,46 @@
+Brokers - stores kafka events/message.manages and disributes messages.
+Horizontally scalable.Fault tolerant.High availablity.
+A server process with storage	A Kafka broker runs on a machine (VM/physical server) and uses disk storage for messages.
+Key Characteristics of a Kafka Broker
+Feature	Description
+Role	Acts as a middleman that receives, stores, and distributes messages (events) between producers and consumers.
+Storage	Temporarily stores messages on disk (but is not long-term storage like a database).
+Scalability	Runs as a process (typically on a VM, bare-metal server, or container).
+Fault Tolerance	Works in a cluster (multiple brokers) for high availability.
+
+How Kafka Brokers Work
+Producers publish messages to topics (e.g., orders, logs).
+
+Brokers store these messages in partitions (for scalability).
+
+Consumers read messages from brokers in real-time or later.
+
+Producer → (Writes to) → Kafka Broker (Stores Data) → (Read by) → Consumer
+
+Broker vs. Kafka Cluster
+A single broker = One Kafka server (not fault-tolerant).
+
+A cluster = Multiple brokers working together (for redundancy and scaling).
+
+Example:
+
+3-broker cluster = 3 machines running Kafka brokers (e.g., broker1, broker2, broker3).
+
+Where is Data Stored in Kafka?
+Brokers store data in log segments on disk (configured in server.properties):
+log.dirs=/tmp/kafka-logs
+
+
+Summary
+A Kafka broker is a server process (not just a VM or storage).
+
+It runs on a machine (VM/container/bare-metal) and uses disk storage for messages.
+
+Multiple brokers form a cluster for fault tolerance.
+
+Need a real-world analogy? Think of a broker like a post office:
+
+Receives letters (messages) → Stores them temporarily → Delivers them to recipients (consumers).
+
+
+
